@@ -29,10 +29,14 @@ function speedHTML() {
 
 // NEXT ASSIGNMENT
 
-var imageID = document.getElementsByTagName("img");
-
 document.getElementById("image").addEventListener("click", changeImage);
+var animals = ["americaneagle.jpg", "cat.jpg", "dolphin.jpg", "fox.jpg", "lion.jpg", "monkey.jpg", "panda.jpg", "penguin.jpg", "dog.jpg"];
+var counter = 0;
 
 function changeImage() {
-    imageID.src = "fox.jpg";
+  if(counter == 9) {
+      counter = 0;
+    }
+    document.getElementById("image").src = animals[counter];
+  counter++;
 }
