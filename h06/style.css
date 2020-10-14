@@ -1,0 +1,64 @@
+body {
+  background-color: beige;
+}
+
+#scoreBoardList {
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 0;
+}
+
+.list {
+  display: inline-table;
+  margin: 0;
+}
+
+#alex {
+  width: 75px;
+  background-color: gold;
+  border: 3px solid black;
+  margin-bottom: 15px;
+  margin: 0px 400px 0px 0px;
+}
+
+#armin {
+  width: 100px;
+  background-color: gold;
+  border: 3px solid black;
+  margin: 0px 0px 0px 400px;
+}
+
+h1 {
+  width: 300px;
+  background-color: gold;
+  border: 3px solid black;
+  text-align: center;
+  padding: 15px;
+  margin: auto;
+}
+
+#images {
+  margin: auto;
+  border: 2px solid black;
+  background-color: gold;
+  width: 1310px;
+  height: 490px;
+  padding: 5px;
+}
+
+div.pictureHolder {
+  width: 205px;
+  height: 150px;
+  float: left;
+  background-color: lightblue;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+
+img {
+  width: 205px;
+  height: 150px;
+  float: left;
+}
+
