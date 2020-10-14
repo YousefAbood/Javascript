@@ -36,6 +36,8 @@ function picturesAdder() {
 }
 
 function makeFavorite(id) {
+  document.getElementById(id).style.visibility = "hidden";
+
   console.log(id);
   notfavorite = document.getElementsByClassName("favorite");
   for(var i = 0; i < notfavorite.length; i++) {
