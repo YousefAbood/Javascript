@@ -46,7 +46,7 @@ h1 {
   padding: 5px;
 }
 
-div.pictureHolder {
+.pictureHolderClass {
   width: 205px;
   height: 150px;
   float: left;
@@ -55,10 +55,3 @@ div.pictureHolder {
   padding: 2px;
   margin: 2px;
 }
-
-img {
-  width: 205px;
-  height: 150px;
-  float: left;
-}
-
