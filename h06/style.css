@@ -9,7 +9,6 @@ body {
 }
 
 .list {
-  display: inline-table;
   margin: 0;
 }
 
@@ -17,15 +16,16 @@ body {
   width: 75px;
   background-color: gold;
   border: 3px solid black;
-  margin-bottom: 15px;
-  margin: 0px 400px 0px 0px;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 #armin {
   width: 100px;
   background-color: gold;
   border: 3px solid black;
-  margin: 0px 0px 0px 400px;
+  margin: auto;
+  margin-top: 10px;
 }
 
 h1 {

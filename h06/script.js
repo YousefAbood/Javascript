@@ -1,18 +1,25 @@
-// ScoreBoard
+// Scoreboard
 
+var counter = 0;
 var alex = 0;
 var armin = 0;
+var alexTurn = true;
+var arminTurn = false;
 
-document.getElementById("alex").innerHTML = "Alex: " + alex;
+document.getElementById("turns").innerHTML = "It is Alex's turn";
 document.getElementById("armin").innerHTML = "Armin: " + armin;
+document.getElementById("alex").innerHTML = "Alex: " + alex;
 
 
 // Image Placement
 
 // Array of images
-var animals = ["americaneagle.jpg", "cat.jpg", "dolphin.jpg", "fox.jpg", "lion.jpg", "monkey.jpg", "panda.jpg", "penguin.jpg", "dog.jpg", "americaneagle2.jpg", "cat2.jpg", "dolphin2.jpg", "fox2.jpg", "lion2.jpg", "monkey2.jpg", "panda2.jpg", "penguin2.jpg", "dog2.jpg"];
+var animals = ["americaneagle.jpg", "cat.jpg", "dolphin.jpg", "fox.jpg", "lion.jpg", "monkey.jpg", "panda.jpg", "penguin.jpg", "dog.jpg", "americaneagle.jpg", "cat.jpg", "dolphin.jpg", "fox.jpg", "lion.jpg", "monkey.jpg", "panda.jpg", "penguin.jpg", "dog.jpg"];
 var randomAnimals = [];
 var pictureHoldersArray = [];
+var firstPictureEvent = false;
+var secondPictureEvent = false;
+var firstPictureID, secondPictureID, firstClickID, secondclickID, fraudPreventionFirstPicture, fraudPreventionSecondPicture;
 
 // Elements Creation
 images = document.getElementById("images");
@@ -38,29 +45,80 @@ function generateArray() {
 for(var v = 0; v < 18; v++) {
   pictureHolder = document.createElement("div");
   pictureHolder.className = "pictureHolderClass";
-  pictureHolder.id = "" + v;
+  pictureHolder.id = v;
   images.appendChild(pictureHolder);
   pictureHolder.addEventListener("click", function(){
-      var counter = 2;
       const currentPicture = this.id;
-      
+      if(!(firstPictureEvent)) {
+        firstPictureClick(currentPicture);
+      }
+      else if(!(secondPictureEvent)) {
+        secondPictureClick(currentPicture);
+      }
   });
   
   pictureHoldersArray[v] = pictureHolder;
-  console.log(pictureHoldersArray);
+}
+
+
+function firstPictureClick(id) {
+  fraudPreventionFirstPicture = pictureHoldersArray[id];
+  firstPictureEvent = true;
+  firstClickID = id;
+  firstPictureID = pictureHoldersArray[id].style.backgroundImage = "url(" + randomAnimals[id] + ")";
+}
+
+function secondPictureClick(id) {
+  fraudPreventionSecondPicture = pictureHoldersArray[id];
+  secondPictureEvent = true;
+  secondClickID = id;
+  secondPictureID = pictureHoldersArray[id].style.backgroundImage = "url(" + randomAnimals[id] + ")";
+  if(firstPictureID == secondPictureID && fraudPreventionFirstPicture != fraudPreventionSecondPicture) {
+    ScoreBoard();
+    firstPictureEvent = false;
+    secondPictureEvent = false;
+  }
+  else {
+    playerTurn();
+    setTimeout(function () { 
+      changeTurns();
+    }, 1000);
+  }
+}
+
+
+function changeTurns() {
+  pictureHoldersArray[firstClickID].style.backgroundImage = "none";
+  pictureHoldersArray[secondClickID].style.backgroundImage = "none";
+  firstPictureEvent = false;
+  secondPictureEvent = false;
+}
+
+function ScoreBoard() {
+  if(alexTurn){
+    alex++;
+    alexTurn = false;
+    arminTurn = true;
+  } 
+  else if(arminTurn) {
+    armin++;
+    alexTurn = true;
+    arminTurn = false;
+  }
+  
+  // ScoreBoard
+  document.getElementById("armin").innerHTML = "Armin: " + armin;
+  document.getElementById("alex").innerHTML = "Alex: " + alex;
 }
 
 
 
-function showPicture(id) {
-  console.log(randomAnimals[id]);
-  pictureHoldersArray[id].style.backgroundImage = "url(" + randomAnimals[id] + ")";
+function playerTurn() {
+  counter++;
+  if(counter%2 == 0) {
+    document.getElementById("turns").innerHTML = "It is Alex's turn";
+  } else {
+    document.getElementById("turns").innerHTML = "It is Armin's turn";
+  }
+  console.log(counter);
 }
-
-function hidePicture(id) {
-  console.log(randomAnimals[id]);
-}
-
-
-
-
